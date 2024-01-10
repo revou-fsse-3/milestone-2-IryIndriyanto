@@ -1,9 +1,11 @@
-import { H1 } from "@/components/typography/H1"
+import { H1 } from "@/components/typography/H1";
 
 const Weather = () => {
-return (
-    <H1> My Weather </H1>
-)
-}
+  return (
+    <div className="py-8">
+      <H1> My Weather </H1>
+    </div>
+  );
+};
 
-export default Weather
+export default Weather;
