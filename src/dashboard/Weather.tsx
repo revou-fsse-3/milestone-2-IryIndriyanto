@@ -7,9 +7,8 @@ const Weather = () => {
     <div className="py-8 md:w-[800px]">
       <H1 className=" text-4xl mb-8">Current Weather</H1>
       <div className="flex flex-col gap-6">
-
-      <SearchBar />
-      <WeatherCard />
+        <SearchBar />
+        <WeatherCard />
       </div>
     </div>
   );
