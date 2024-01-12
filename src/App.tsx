@@ -1,12 +1,13 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Page404 from "./error-page/page404";
-import Weather from "./dashboard/Weather";
-import Layout from "./dashboard/Layout";
-import MapWeather from "./dashboard/MapWeather";
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import Page404 from './error-page/page404'
+import Weather from './dashboard/Weather'
+import Layout from './dashboard/Layout'
+import MapWeather from './dashboard/MapWeather'
+import { WeatherProvider } from './components/WeatherProvider'
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Layout />,
     errorElement: <Page404 />,
     children: [
@@ -19,15 +20,19 @@ const router = createBrowserRouter([
         element: <Weather />,
       },
       {
-        path: "/weather-map",
+        path: '/weather-map',
         element: <MapWeather />,
       },
     ],
   },
-]);
+])
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <WeatherProvider>
+      <RouterProvider router={router} />
+    </WeatherProvider>
+  )
 }
 
-export default App;
+export default App

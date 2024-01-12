@@ -9,7 +9,7 @@ export default function Layout() {
         <aside className="fixed top-14 z-30 hidden h-screen w-full shrink-0 md:sticky md:flex">
           <div className="h-full py-6 pr-10 lg:py-8 ">
             <div className="flex items-center gap-2 mb-8">
-              <img src="../sun.svg" className="w-[32px]" alt="sun-logo" />
+              <img src="../src/assets/sun.svg" className="w-[32px]" alt="sun-logo" />
               <span className="text-2xl font-semibold">Weather Now</span>
             </div>
             <div className="grid grid-flow-row gap-4 auto-rows-max ml-2 text-sm">

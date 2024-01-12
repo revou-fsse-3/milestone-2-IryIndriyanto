@@ -1,9 +1,9 @@
 // import useGetWeather from '@/hooks/useGetWeather'
+import { useWeatherContext } from './WeatherProvider'
 import { Card } from './ui/card'
-import { weatherData } from '@/utils/dummy-data'
 
 const WeatherCard = () => {
-  // const { weatherData } = useGetWeather(51.5073219, -0.1276474, 'metric')
+  const { weatherData } = useWeatherContext()
 
   return (
     <Card className="p-6">
