@@ -4,7 +4,7 @@ import { H1 } from "@/components/typography/H1";
 
 const Weather = () => {
   return (
-    <div className="py-8 md:w-[800px]">
+    <div className="py-8 md:max-w-[700px] mx-4">
       <H1 className=" text-4xl mb-8">Current Weather</H1>
       <div className="flex flex-col gap-6">
         <SearchBar />

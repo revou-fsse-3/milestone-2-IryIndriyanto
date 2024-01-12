@@ -19,7 +19,7 @@ import { TCityData } from '@/interface/cityDataType'
 const SearchBar = () => {
   const { fetchWeatherData } = useWeatherContext()
 
-  const handleWeather = (lat: number, lon: number, units = 'matric') => {
+  const handleWeather = (lat: number, lon: number, units = 'metric') => {
     fetchWeatherData(lat, lon, units)
   }
 

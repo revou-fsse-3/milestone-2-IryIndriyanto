@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 export default function Layout() {
   return (
     <div>
-      <div className="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10">
+      <div className="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-2 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10">
         <aside className="fixed top-14 z-30 hidden h-screen w-full shrink-0 md:sticky md:flex">
           <div className="h-full py-6 pr-10 lg:py-8 ">
             <div className="flex items-center gap-2 mb-8">
@@ -25,7 +25,7 @@ export default function Layout() {
           </div>
           <Separator orientation="vertical" className="h-screen" />
         </aside>
-        <Outlet />
+        <Outlet/>
       </div>
     </div>
   );
