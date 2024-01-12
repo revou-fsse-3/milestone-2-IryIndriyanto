@@ -10,7 +10,7 @@ export default function Layout() {
           <div className="h-full py-6 pr-10 lg:py-8 ">
             <div className="flex items-center gap-2 mb-8">
               <img src="../src/assets/sun.svg" className="w-[32px]" alt="sun-logo" />
-              <span className="text-2xl font-semibold">Weather Now</span>
+              <span className="text-xl font-semibold lg:text-2xl">Weather Now</span>
             </div>
             <div className="grid grid-flow-row gap-4 auto-rows-max ml-2 text-sm">
               <a className=" px-2 py-1" href="/weather">
