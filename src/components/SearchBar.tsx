@@ -11,14 +11,39 @@ import {
 import { Input } from './ui/input'
 import { Label } from './ui/label'
 import { ScrollArea } from './ui/scroll-area'
-import { cityData } from '@/utils/dummy-data'
 import { useWeatherContext } from './WeatherProvider'
+import { API_KEY } from '@/utils/constant'
+import { FormEvent, useState } from 'react'
+import { TCityData } from '@/interface/cityDataType'
 
 const SearchBar = () => {
   const { fetchWeatherData } = useWeatherContext()
 
   const handleWeather = (lat: number, lon: number, units = 'matric') => {
     fetchWeatherData(lat, lon, units)
+  }
+
+  const [cityData, setCityData] = useState<TCityData[]>([])
+
+  const fetchCityData = async (cityName: string) => {
+    const response = await fetch(
+      `https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=6&appid=${API_KEY}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    )
+    const data = await response.json()
+    setCityData(data)
+  }
+
+  const [searchTerm, setSearchTerm] = useState<string>('')
+
+  const handleSearch = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    fetchCityData(searchTerm)
   }
 
   return (
@@ -32,12 +57,16 @@ const SearchBar = () => {
         <DialogHeader>
           <DialogTitle>Search City</DialogTitle>
         </DialogHeader>
-        <form className="flex items-center space-x-2">
+        <form onSubmit={handleSearch} className="flex items-center space-x-2">
           <div className="grid flex-1 gap-2">
-            <Label htmlFor="link" className="sr-only">
-              Link
+            <Label htmlFor="search" className="sr-only">
+              Search
             </Label>
-            <Input id="link" placeholder="search city" />
+            <Input
+              id="search"
+              placeholder="search city"
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
           </div>
           <Button type="submit" size="sm" className="px-3 py-5">
             <span className="sr-only">Search</span>
@@ -46,15 +75,15 @@ const SearchBar = () => {
         </form>
         <ScrollArea className=" h-32 w-auto rounded-md ">
           <div className="p-0">
-            {cityData?.map((city, index) => (
-              <DialogClose className='w-full'>
+            {cityData?.map((city) => (
+              <DialogClose key={city.lat} className="w-full">
                 <Button
-                  key={index}
+                  
                   variant={'outline'}
                   className=" w-full py-3 px-4 my-1"
                   onClick={() => handleWeather(city.lat, city.lon)}
                 >
-                  {city.name}, {city.country},
+                  {city.name}, {city.state}, {city.country}.
                 </Button>
               </DialogClose>
             ))}
