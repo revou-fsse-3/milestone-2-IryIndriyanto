@@ -5,13 +5,35 @@ import { Card } from './ui/card'
 
 const WeatherCard = () => {
   const { weatherData } = useWeatherContext()
+  function convertUnixTime(unixTime: number) {
+    const date = new Date(unixTime * 1000)
+
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1
+    const day = date.getDate()
+    const hours = date.getHours()
+    const minutes = date.getMinutes()
+
+    // Create a formatted string without seconds
+    const formattedDate = `${year}-${month < 10 ? '0' + month : month}-${
+      day < 10 ? '0' + day : day
+    } `
+    const formattedHour = `${hours}:${minutes < 10? '0' + minutes: minutes}`
+
+    return { formattedDate, formattedHour }
+  }
+
+  const { formattedDate, formattedHour } = convertUnixTime(weatherData.dt)
 
   return (
     <Card className="p-6">
       <H2>{weatherData?.name}</H2>
       <div className="flex flex-col-reverse lg:flex-row">
-        <div className="flex flex-col justify-between p-6 w-full lg:w-1/2  aspect-square">
-          <div></div>
+        <div className="flex flex-col justify-between p-7 w-full lg:w-1/2  aspect-square">
+          <div className="flex justify-between font-thin text-xl">
+            <div>{formattedDate}</div>
+            <div>{formattedHour}</div>
+          </div>
           <div className="flex justify-center text-5xl font-thin">
             {weatherData?.main.temp}° C
           </div>
