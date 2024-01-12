@@ -21,7 +21,7 @@ const WeatherCard = () => {
           <div className="text-3xl font-thin">
             {weatherData?.weather[0].main}
           </div>
-          <div className="flex justify-center h-full w-full">
+          <div className="flex justify-center w-full py-4">
             {weatherData?.weather[0].main === 'Rain' && (
               <img
                 src="../src/assets/Rain.svg"
